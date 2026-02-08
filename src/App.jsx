@@ -9,7 +9,7 @@ const App = () => {
   const [category, setCategory] = useState('all')
 
   const addToCart = (product) => {
-    setCart((prev) => [...prev, product])
+    setCart((prevCart) => [...prevCart, product])
   }
 
   return (
@@ -20,8 +20,10 @@ const App = () => {
         mode.
       </p>
 
+      {/* Dark Mode Toggle */}
       <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
 
+      {/* Category Filter */}
       <label>Filter by Category: </label>
       <select
         value={category}
@@ -30,11 +32,13 @@ const App = () => {
         <option value="all">All</option>
         <option value="Fruits">Fruits</option>
         <option value="Dairy">Dairy</option>
-        <option value="NonExistent">NonExistent</option>
+        <option value="Veggies">Veggies</option>
       </select>
 
+      {/* Product List */}
       <ProductList category={category} addToCart={addToCart} />
 
+      {/* Shopping Cart */}
       <Cart cart={cart} />
     </div>
   )
